@@ -93,3 +93,31 @@ function humanReadable(seconds) {
     return list;
   
   }
+
+  //Where my anagrams at?
+  //https://www.codewars.com/kata/523a86aa4230ebb5420001e1
+
+  function anagrams(word, words) {
+    let split = word.split("")
+    let final = []
+  
+    for(let i = 0; i < words.length; i++){
+  
+      let test = words[i].split("")
+      if(test.length == split.length){ //Words must be same length
+        for(let j = 0; j < split.length; j++){
+          if(test.includes(split[j])){ //Goes through every letter of split, whittles test down to 0 letters if it matches
+            test.splice(test.indexOf(split[j]), 1)
+          }
+        }
+  
+        if(test.length == 0){ //if there are no letters left, it means every letter matched between the two and they are anagrams
+          final.push(words[i])
+        }
+  
+      }
+    }
+    
+    return final
+  
+  }
