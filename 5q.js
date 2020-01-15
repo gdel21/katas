@@ -53,3 +53,43 @@ function humanReadable(seconds) {
     }
     return final.concat(zeros)
   }
+
+  //Directions Reduction
+  //
+
+  function dirReduc(arr){
+    let list = [...arr]
+    //Simply test each list item with the item in front of it. If they contradict, remove both.
+    for(let i = 0; i < list.length; i++){
+    
+      if(list[i] == "NORTH"){
+        if(list[i+1] == "SOUTH"){
+          list.splice(i, 2)
+          i -= 2;
+        }
+      }
+      
+      if(list[i] == "SOUTH"){
+        if(list[i+1] == "NORTH"){
+          list.splice(i, 2)
+          i -= 2;
+        }
+      }
+      if(list[i] == "WEST"){
+        if(list[i+1] == "EAST"){
+          list.splice(i, 2)
+          i -= 2;
+        }
+      }
+      
+      if(list[i] == "EAST"){
+        if(list[i+1] == "WEST"){
+          list.splice(i, 2)
+          i -= 2;
+        }
+      }
+    }
+  
+    return list;
+  
+  }
