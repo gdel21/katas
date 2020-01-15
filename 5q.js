@@ -14,3 +14,42 @@ function pigIt(str){
     }
     return array.join(" ")
   }
+
+//Human Readable Time
+//https://www.codewars.com/kata/52685f7382004e774f0001f7
+
+function humanReadable(seconds) {
+    let minutes =  ((seconds-(seconds%60))/60)
+    let hours = ((minutes-(minutes%60))/60)
+    minutes -= (hours*60)
+    let realSeconds = seconds - (hours*3600) - (minutes*60)
+  
+    //Formatting each time interval
+    if(hours < 10){
+      hours = "0" + hours
+    }
+    if(minutes < 10){
+      minutes = "0" + minutes
+    }
+    if(realSeconds < 10){
+      realSeconds = "0" + realSeconds
+    }
+  
+    return hours + ":" + minutes + ":" + realSeconds
+  }
+
+  //Moving zeros to end
+  //https://www.codewars.com/kata/52597aa56021e91c93000cb0
+
+  var moveZeros = function (arr) {
+    let final = [...arr]
+    console.log(final)
+    let zeros = []
+    for(let i = 0; i < final.length; i++){
+      if(final[i] === 0){
+        zeros.push(final.splice(i, 1)[0])
+        i--
+      }
+    }
+    return final.concat(zeros)
+  }
